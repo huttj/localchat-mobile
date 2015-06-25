@@ -1,0 +1,21 @@
+<div style="height: 100%">
+    <ion-content style="height: calc(100% - 137px)" delegate-handle="chats-list">
+        <div class="list">
+            <div class="item" ng-repeat="chat in C.chats | orderObjectBy:'sentOn':false">
+                <div style="height: 1em;">
+                    <h3 ng-bind="chat.username" style="font-style: italic; position: absolute; color: {{getColor(chat)}}"></h3>
+                    <h4 ng-bind="chat.sentOn | timeAgo" style="right: 1em; position: absolute;"></h4>
+                </div>
+                <h2 ng-bind="chat.body" style="min-height: 1.25em;"></h2>
+            </div>
+        </div>
+    </ion-content>
+    <form ng-submit="sendChat(chat.body)" class="row" style="padding: 0; position: absolute;   bottom: 48px; z-index: 5">
+        <div style="width: calc(100% - 40px)">
+            <label class="item item-input">
+                <input type="text" placeholder="Chat" ng-model="chat.body">
+            </label>
+        </div>
+        <a class="button button-positive" style="width: 40px; margin-top: -1px;"><i class="icon ion-paper-airplane"></i></a>
+    </form>
+</div>
